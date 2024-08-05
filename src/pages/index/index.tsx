@@ -1,5 +1,6 @@
 import styles from "./styles/index.module.scss";
 import CommonHeader from "@/components/common/header/CommonHeader";
+import CommonSearchBar from "@/components/common/searchBar/CommonSearchBar";
 
 function index() {
   return (
@@ -14,6 +15,7 @@ function index() {
               모든 지역에 있는 크리에이터들의 지원을 받습니다.
             </span>
             {/* 검색창 UI 부분 */}
+            <CommonSearchBar />
           </div>
         </div>
         <div className={styles.page__contents__imageBox}></div>

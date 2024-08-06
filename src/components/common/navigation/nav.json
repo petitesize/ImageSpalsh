@@ -1,0 +1,79 @@
+[
+  {
+    "index": 0,
+    "path": "/edit",
+    "label": "보도/편집 전용",
+    "serachValue": "edit",
+    "isActive": false
+  },
+  {
+    "index": 1,
+    "path": "/following",
+    "label": "팔로잉",
+    "serachValue": "following",
+    "isActive": false
+  },
+  {
+    "index": 2,
+    "path": "/photoPlus",
+    "label": "Unsplash Photo",
+    "serachValue": "photo",
+    "isActive": false
+  },
+  {
+    "index": 4,
+    "path": "/3dRender",
+    "label": "3D 렌더링",
+    "serachValue": "3d rendering",
+    "isActive": false
+  },
+  {
+    "index": 5,
+    "path": "/nature",
+    "label": "자연",
+    "serachValue": "nature",
+    "isActive": false
+  },
+  {
+    "index": 6,
+    "path": "/texture",
+    "label": "텍스처 및 패턴",
+    "serachValue": "texture",
+    "isActive": false
+  },
+  {
+    "index": 7,
+    "path": "/interior",
+    "label": "인테리어",
+    "serachValue": "interior",
+    "isActive": false
+  },
+  {
+    "index": 8,
+    "path": "/film",
+    "label": "필름",
+    "serachValue": "film",
+    "isActive": false
+  },
+  {
+    "index": 9,
+    "path": "/experiment",
+    "label": "실험적인",
+    "serachValue": "experiment",
+    "isActive": false
+  },
+  {
+    "index": 10,
+    "path": "/travel",
+    "label": "여행",
+    "serachValue": "travel",
+    "isActive": false
+  },
+  {
+    "index": 11,
+    "path": "/sports",
+    "label": "스포츠",
+    "serachValue": "sports",
+    "isActive": false
+  }
+]

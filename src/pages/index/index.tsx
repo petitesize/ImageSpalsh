@@ -4,8 +4,33 @@ import CommonSearchBar from "@/components/common/searchBar/CommonSearchBar";
 import CommonNav from "@/components/common/navigation/CommonNav";
 import CommonFooter from "@/components/common/footer/CommonFooter";
 import Card from "./components/Card";
+import axios from "axios";
+import { useEffect } from "react";
 
 function index() {
+  const getData = async () => {
+    // 오픈 API 호출
+    const API_URL = "https://api.unsplash.com/search/photos";
+    const API_KEY = "jKIsEWgQERBjQ0y_NbSF3zDDSmMGqBaXVutdEly0joY";
+    const PER_PAGE = 30;
+
+    const searchValue = "Korea";
+    const pageValue = 100;
+
+    try {
+      const res = await axios.get(
+        `${API_URL}?query=${searchValue}&client_id=${API_KEY}&page=${pageValue}&per_page=${PER_PAGE}`
+      );
+      console.log(res);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
+
   return (
     <div className={styles.page}>
       <CommonHeader />

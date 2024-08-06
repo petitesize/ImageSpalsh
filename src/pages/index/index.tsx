@@ -2,6 +2,8 @@ import styles from "./styles/index.module.scss";
 import CommonHeader from "@/components/common/header/CommonHeader";
 import CommonSearchBar from "@/components/common/searchBar/CommonSearchBar";
 import CommonNav from "@/components/common/navigation/CommonNav";
+import CommonFooter from "@/components/common/footer/CommonFooter";
+import Card from "./components/Card";
 
 function index() {
   return (
@@ -20,8 +22,14 @@ function index() {
             <CommonSearchBar />
           </div>
         </div>
-        <div className={styles.page__contents__imageBox}></div>
+        <div className={styles.page__contents__imageBox}>
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+        </div>
       </div>
+      <CommonFooter />
     </div>
   );
 }

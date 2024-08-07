@@ -4,32 +4,18 @@ import CommonSearchBar from "@/components/common/searchBar/CommonSearchBar";
 import CommonNav from "@/components/common/navigation/CommonNav";
 import CommonFooter from "@/components/common/footer/CommonFooter";
 import Card from "./components/Card";
-import axios from "axios";
-import { useEffect } from "react";
+import { useState } from "react";
+import { imageData } from "@/recoil/selectors/imageSelector";
+import { CardDTO } from "./types/card";
+import { useRecoilValue } from "recoil";
 
 function index() {
-  const getData = async () => {
-    // 오픈 API 호출
-    const API_URL = "https://api.unsplash.com/search/photos";
-    const API_KEY = "jKIsEWgQERBjQ0y_NbSF3zDDSmMGqBaXVutdEly0joY";
-    const PER_PAGE = 30;
+  const imgSelector = useRecoilValue(imageData);
+  // const [imgData, setImgData] = useState<CardDTO[]>([]);
 
-    const searchValue = "Korea";
-    const pageValue = 100;
-
-    try {
-      const res = await axios.get(
-        `${API_URL}?query=${searchValue}&client_id=${API_KEY}&page=${pageValue}&per_page=${PER_PAGE}`
-      );
-      console.log(res);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  useEffect(() => {
-    getData();
-  }, []);
+  const CARD_LIST = imgSelector.data.results.map((card: CardDTO) => {
+    return <Card data={card} key={card.id} />;
+  });
 
   return (
     <div className={styles.page}>
@@ -47,12 +33,7 @@ function index() {
             <CommonSearchBar />
           </div>
         </div>
-        <div className={styles.page__contents__imageBox}>
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-        </div>
+        <div className={styles.page__contents__imageBox}>{CARD_LIST}</div>
       </div>
       <CommonFooter />
     </div>

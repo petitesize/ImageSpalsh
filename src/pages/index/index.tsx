@@ -12,11 +12,18 @@ import { useRecoilValue } from "recoil";
 
 function index() {
   const imgSelector = useRecoilValue(imageData);
-  const [imgData, setImgData] = useState<CardDTO[]>([]);
+  const [imgData, setImgData] = useState<CardDTO>();
   const [open, setOpen] = useState<boolean>(false); // 이미지 상세 다이얼로그 발생 관리 상태
 
   const CARD_LIST = imgSelector.data.results.map((card: CardDTO) => {
-    return <Card data={card} key={card.id} handleDialog={setOpen} />;
+    return (
+      <Card
+        data={card}
+        key={card.id}
+        handleDialog={setOpen}
+        handleSetData={setImgData}
+      />
+    );
   });
 
   return (
@@ -38,7 +45,7 @@ function index() {
         <div className={styles.page__contents__imageBox}>{CARD_LIST}</div>
       </div>
       <CommonFooter />
-      {open && <DetailDialog />}
+      {open && <DetailDialog data={imgData} handleDialog={setOpen} />}
     </div>
   );
 }

@@ -4,6 +4,7 @@ import CommonSearchBar from "@/components/common/searchBar/CommonSearchBar";
 import CommonNav from "@/components/common/navigation/CommonNav";
 import CommonFooter from "@/components/common/footer/CommonFooter";
 import Card from "./components/Card";
+import DetailDialog from "@/components/common/dialog/DetailDialog";
 import { useState } from "react";
 import { imageData } from "@/recoil/selectors/imageSelector";
 import { CardDTO } from "./types/card";
@@ -11,10 +12,11 @@ import { useRecoilValue } from "recoil";
 
 function index() {
   const imgSelector = useRecoilValue(imageData);
-  // const [imgData, setImgData] = useState<CardDTO[]>([]);
+  const [imgData, setImgData] = useState<CardDTO[]>([]);
+  const [open, setOpen] = useState<boolean>(false); // 이미지 상세 다이얼로그 발생 관리 상태
 
   const CARD_LIST = imgSelector.data.results.map((card: CardDTO) => {
-    return <Card data={card} key={card.id} />;
+    return <Card data={card} key={card.id} handleDialog={setOpen} />;
   });
 
   return (
@@ -36,6 +38,7 @@ function index() {
         <div className={styles.page__contents__imageBox}>{CARD_LIST}</div>
       </div>
       <CommonFooter />
+      {open && <DetailDialog />}
     </div>
   );
 }

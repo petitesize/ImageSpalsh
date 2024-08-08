@@ -5,26 +5,33 @@ import CommonNav from "@/components/common/navigation/CommonNav";
 import CommonFooter from "@/components/common/footer/CommonFooter";
 import Card from "./components/Card";
 import DetailDialog from "@/components/common/dialog/DetailDialog";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { imageData } from "@/recoil/selectors/imageSelector";
 import { CardDTO } from "./types/card";
-import { useRecoilValue } from "recoil";
+import { useRecoilValueLoadable } from "recoil";
 
 function index() {
-  const imgSelector = useRecoilValue(imageData);
+  const imgSelector = useRecoilValueLoadable(imageData);
   const [imgData, setImgData] = useState<CardDTO>();
   const [open, setOpen] = useState<boolean>(false); // 이미지 상세 다이얼로그 발생 관리 상태
 
-  const CARD_LIST = imgSelector.data.results.map((card: CardDTO) => {
-    return (
-      <Card
-        data={card}
-        key={card.id}
-        handleDialog={setOpen}
-        handleSetData={setImgData}
-      />
-    );
-  });
+  const CARD_LIST = useMemo(() => {
+    if (imgSelector.state === "hasValue") {
+      const result = imgSelector.contents.map((card: CardDTO) => {
+        return (
+          <Card
+            data={card}
+            key={card.id}
+            handleDialog={setOpen}
+            handleSetData={setImgData}
+          />
+        );
+      });
+      return result;
+    } else {
+      return <div>loading...</div>;
+    }
+  }, [imgSelector]);
 
   return (
     <div className={styles.page}>

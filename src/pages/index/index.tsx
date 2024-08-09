@@ -9,6 +9,7 @@ import { useMemo, useState } from "react";
 import { imageData } from "@/recoil/selectors/imageSelector";
 import { CardDTO } from "./types/card";
 import { useRecoilValueLoadable } from "recoil";
+import Loading from "./components/Loading";
 
 function index() {
   const imgSelector = useRecoilValueLoadable(imageData);
@@ -29,7 +30,7 @@ function index() {
       });
       return result;
     } else {
-      return <div>loading...</div>;
+      return <Loading />;
     }
   }, [imgSelector]);
 

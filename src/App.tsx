@@ -5,6 +5,7 @@ import { RecoilRoot } from "recoil";
 
 // 페이지 컴포넌트
 import MainPage from "@pages/index/index";
+import BookmardPage from "@pages/bookmark/index";
 
 // 2. RecoilRoot로 라우터를 감싸줌
 function App() {
@@ -14,6 +15,7 @@ function App() {
         <Routes>
           <Route index path="/" element={<MainPage />}></Route>
           <Route path="/:id" element={<MainPage />}></Route>
+          <Route path="/bookmark" element={<BookmardPage />}></Route>
         </Routes>
       </BrowserRouter>
     </RecoilRoot>

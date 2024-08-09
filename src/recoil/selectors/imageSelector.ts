@@ -21,7 +21,7 @@ export const imageData = selector({
       );
 
       //   이 selector 호출 시 이 res 값이 return
-      return res.data.results;
+      return res.data;
     } catch (error) {
       console.log(error);
     }

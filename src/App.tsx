@@ -14,7 +14,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route index path="/" element={<MainPage />}></Route>
-          <Route path="/:id" element={<MainPage />}></Route>
+          <Route path="/search/:id" element={<MainPage />}></Route>
           <Route path="/bookmark" element={<BookmardPage />}></Route>
         </Routes>
       </BrowserRouter>

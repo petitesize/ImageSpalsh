@@ -89,7 +89,7 @@ function DetailDialog({ data, handleDialog }: Props) {
     } else if (!getLoaclStorage) return;
 
     // ESC 눌렀을 때, 다이얼로그 창 닫기
-    const escKeyDownCloseDialog = (event: React.KeyboardEvent) => {
+    const escKeyDownCloseDialog = (event: KeyboardEvent) => {
       console.log("함수 호출");
       if (event.key === "Escape") {
         closeDialog();

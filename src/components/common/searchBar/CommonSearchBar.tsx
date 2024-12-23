@@ -5,8 +5,8 @@ import { searchState } from "@/recoil/atoms/searchState";
 import { pageState } from "@/recoil/atoms/pageState";
 
 function CommonSearchBar() {
-  const [search, setSearch] = useRecoilState(searchState);
-  const [page, setPage] = useRecoilState(pageState);
+  const [, setSearch] = useRecoilState(searchState);
+  const [, setPage] = useRecoilState(pageState);
   const [text, setText] = useState("");
   const onChange = (event) => {
     setText(event.target.value);

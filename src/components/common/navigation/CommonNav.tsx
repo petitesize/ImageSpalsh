@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import styles from "./CommonNav.module.scss";
 import { Link, useLocation } from "react-router-dom";
 import navJson from "./nav.json";
-import { useRecoilState, useSetRecoilState } from "recoil";
+import { useRecoilState } from "recoil";
 import { pageState } from "@/recoil/atoms/pageState";
 import { searchState } from "@/recoil/atoms/searchState";
 
@@ -17,8 +17,8 @@ interface Navigation {
 function CommonNav() {
   const location = useLocation();
   const [navigation, setNavigation] = useState<Navigation[]>(navJson);
-  const [page, setPage] = useRecoilState(pageState);
-  const [search, setSearch] = useRecoilState(searchState);
+  const [, setPage] = useRecoilState(pageState);
+  const [, setSearch] = useRecoilState(searchState);
 
   useEffect(() => {
     navigation.forEach((nav: Navigation) => {

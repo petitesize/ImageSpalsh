@@ -1,4 +1,3 @@
-import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 // 1. 리코일 선언
 import { RecoilRoot } from "recoil";

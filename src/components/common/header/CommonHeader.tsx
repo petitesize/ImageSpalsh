@@ -16,7 +16,7 @@ function CommonHeader() {
         onClick={() => moveToPage("main")}
       >
         <img
-          src="src/assets/images/image-logo.png"
+          src="/images/image-logo.png"
           alt=""
           className={styles.header__logoBox__logo}
         />

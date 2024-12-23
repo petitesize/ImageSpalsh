@@ -57,7 +57,7 @@ function CommonFooter() {
     <footer className={styles.footer}>
       <div className={styles.pagination}>
         <button className={styles.pagination__button} onClick={moveToPrev}>
-          <img src="src/assets/icons/icon-arrowLeft.svg" alt="" />
+          <img src="/icons/icon-arrowLeft.svg" alt="" />
         </button>
         {/* 변경된 UI 부분 */}
         {/* <span>1</span> */}
@@ -93,7 +93,7 @@ function CommonFooter() {
               );
           })}
         <button className={styles.pagination__button} onClick={moveToNext}>
-          <img src="src/assets/icons/icon-arrowRight.svg" alt="" />
+          <img src="/icons/icon-arrowRight.svg" alt="" />
         </button>
       </div>
     </footer>

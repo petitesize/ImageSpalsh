@@ -23,7 +23,7 @@ function CommonHeader() {
         <span className={styles.header__logoBox__title}>PhotoSplash</span>
       </div>
       <div className={styles.header__profileBox}>
-        <button className={styles.header__profileBox__button}>사진제출</button>
+        {/* <button className={styles.header__profileBox__button}>사진제출</button> */}
         <button
           className={styles.header__profileBox__button}
           onClick={() => moveToPage("bookmark")}

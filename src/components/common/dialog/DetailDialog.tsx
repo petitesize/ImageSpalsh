@@ -3,6 +3,8 @@ import styles from "./DetailDialog.module.scss";
 import { useEffect, useState } from "react";
 import toast, { toastConfig } from "react-simple-toasts";
 import "react-simple-toasts/dist/theme/dark.css";
+import axios from "axios";
+export const API_KEY = "jKIsEWgQERBjQ0y_NbSF3zDDSmMGqBaXVutdEly0joY";
 
 toastConfig({ theme: "dark" });
 
@@ -47,6 +49,34 @@ function DetailDialog({ data, handleDialog }: Props) {
         toast("해당 이미지를 북마크에 저장하였습니다.");
       }
     }
+  };
+
+  // 다운로드 이벤트
+  const downloadImg = async () => {
+    const downloadLoacation = data.links.download_location;
+
+    // 다운로드 카운트를 올려주는 api, unsplash api guideline 참조
+    await axios.get(`${downloadLoacation}?client_id=${API_KEY}`);
+
+    // 이미지 다운로드 URL로 실제 이미지 가져오기
+    // axios 응답이 텍스트로 반환할건데, 우리는 이미지를 가져올 것이기 때문에 blob 타입으로 반환받을 것
+    const imageResponse = await axios.get(data.urls.full, {
+      responseType: "blob", // 이미지 데이터를 Blob 형태로 받음
+    });
+
+    //  반환값의 data에 blob 데이터 들어있음
+    const imageBlob = imageResponse.data;
+    // blob 데이터를 다운로드하려면, 브라우저에서 접근 가능한 URL로 변환해야함
+    // URL.createObjectURL은 브라우저에서 Blob 데이터에 접근할 수 있는 임시 URL을 생성한다.
+    const imageUrl = URL.createObjectURL(imageBlob);
+    // 다운로드 트리거를 위한 가상의 a 요소 생성
+    const a = document.createElement("a");
+    // 위에서 만든 임시 URL을 a의 href 속성에 붙여줌
+    a.href = imageUrl;
+    // a의 download 속성 붙이면 브라우저가 파일 다운로드를 함, 임의의 이름으로 파일 이름 지정
+    a.download = `${data.slug}.jpg`;
+    // 다운로드 트리거
+    a.click();
   };
 
   useEffect(() => {
@@ -113,7 +143,10 @@ function DetailDialog({ data, handleDialog }: Props) {
               )}
               북마크
             </button>
-            <button className={styles.bookmark__button}>
+            <button
+              className={styles.bookmark__button}
+              onClick={() => downloadImg()}
+            >
               {/* 구글 아이콘 사용 */}
               다운로드
             </button>
@@ -154,7 +187,7 @@ function DetailDialog({ data, handleDialog }: Props) {
             </div>
           </div>
           <div className={styles.tagBox}>
-            {data.tags.map((tag: Tag) => {
+            {data.tags?.map((tag: Tag) => {
               return (
                 <div className={styles.tagBox__tag} key={tag.title}>
                   {tag.title}

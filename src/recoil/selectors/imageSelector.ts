@@ -2,9 +2,9 @@ import { selector } from "recoil";
 import axios from "axios";
 import { searchState } from "../atoms/searchState";
 import { pageState } from "../atoms/pageState";
+import { API_KEY } from "@/constants";
+import { API_URL } from "@/constants";
 
-const API_URL = "https://api.unsplash.com/search/photos";
-const API_KEY = "jKIsEWgQERBjQ0y_NbSF3zDDSmMGqBaXVutdEly0joY";
 const PER_PAGE = 30;
 
 export const imageData = selector({
